@@ -20,9 +20,11 @@ test("server-renders the portfolio", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Your Name — Software Engineer<\/title>/i);
-  assert.match(html, /Selected work/);
   assert.match(html, /Publications/);
   assert.match(html, /Projects/);
-  assert.match(html, /Available for opportunities/);
+  assert.match(html, /Contact \/ Bio/);
+  assert.match(html, /More about me/);
+  assert.match(html, /hello@example\.com/);
+  assert.doesNotMatch(html, /Available for opportunities/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);
 });

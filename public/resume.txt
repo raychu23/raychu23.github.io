@@ -1,0 +1,3 @@
+YOUR NAME — SOFTWARE ENGINEER
+
+Replace this placeholder with your resume PDF, then update the resume link in app/page.tsx to /resume.pdf.

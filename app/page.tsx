@@ -4,20 +4,18 @@ const publications = [
     year: "2026",
     type: "Research paper",
     title: "Publication title goes here",
-    description:
-      "A short, plain-language summary of the question you explored, your contribution, and why the work matters.",
+    description: "One sentence on the research question, your contribution, and the result.",
     tags: ["Machine learning", "Research"],
-    visual: "publication-one",
+    visual: "lime",
   },
   {
     number: "02",
     year: "2025",
     type: "Conference paper",
     title: "Your second publication",
-    description:
-      "Add the key finding, venue, and your role here. Keep it brief enough for a recruiter to understand at a glance.",
+    description: "Add the venue, central finding, and a concise description of your role.",
     tags: ["Data systems", "Collaboration"],
-    visual: "publication-two",
+    visual: "blue",
   },
 ];
 
@@ -27,55 +25,52 @@ const projects = [
     year: "2026",
     type: "Featured project",
     title: "Project name goes here",
-    description:
-      "Describe the problem, what you built, and the measurable result. This card can link to a live demo or case study.",
+    description: "The problem you solved, what you built, and one measurable outcome.",
     tags: ["TypeScript", "React", "APIs"],
-    visual: "project-one",
+    visual: "coral",
   },
   {
     number: "02",
     year: "2025",
     type: "Selected project",
     title: "Another thing you built",
-    description:
-      "Show range with a second project: a product, developer tool, data experience, or technically ambitious experiment.",
+    description: "A compact summary of the technical challenge and why the work matters.",
     tags: ["Python", "Systems"],
-    visual: "project-two",
+    visual: "sand",
   },
+];
+
+const profiles = [
+  { label: "GitHub", icon: "GH", href: "https://github.com/" },
+  { label: "LinkedIn", icon: "in", href: "https://www.linkedin.com/" },
+  { label: "Résumé", icon: "CV", href: "/resume.txt" },
 ];
 
 type WorkItem = (typeof publications)[number] | (typeof projects)[number];
 
-function ArrowIcon() {
+function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
 function WorkCard({ item }: { item: WorkItem }) {
   return (
     <article className="work-card">
-      <a className="card-link" href="#contact" aria-label={`Read more about ${item.title}`}>
-        <div className={`card-visual ${item.visual}`} aria-hidden="true">
-          <span className="visual-index">{item.number}</span>
-          <div className="visual-orbit" />
-          <div className="visual-window">
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
-        <div className="card-body">
-          <div className="card-meta">
-            <span>{item.type}</span>
+      <a href="#contact" aria-label={`Open ${item.title}`}>
+        <div className="card-copy">
+          <div className="card-kicker">
+            <span>{item.number} / {item.type}</span>
             <span>{item.year}</span>
           </div>
-          <div className="card-title-row">
-            <h3>{item.title}</h3>
-            <span className="card-arrow"><ArrowIcon /></span>
-          </div>
+          <h3>{item.title}</h3>
           <p>{item.description}</p>
-          <ul className="tag-list" aria-label="Technologies and topics">
+          <ul aria-label="Technologies and topics">
             {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
           </ul>
+        </div>
+        <div className={`card-thumbnail ${item.visual}`} aria-hidden="true">
+          <span>{item.number}</span>
+          <i />
+          <b><Arrow /></b>
         </div>
       </a>
     </article>
@@ -84,73 +79,93 @@ function WorkCard({ item }: { item: WorkItem }) {
 
 export default function Home() {
   return (
-    <main>
-      <nav className="topbar" aria-label="Main navigation">
+    <main id="top">
+      <nav className="topbar" aria-label="Portfolio sections">
         <a className="wordmark" href="#top" aria-label="Your Name, home">YN<span>.</span></a>
-        <div className="nav-status"><span /> Available for opportunities</div>
-        <a className="nav-link" href="#work">Selected work</a>
-        <a className="nav-link" href="#contact">Contact</a>
+        <div className="nav-links">
+          <a href="#contact">Contact / Bio</a>
+          <a href="#publications">Publications</a>
+          <a href="#projects">Projects</a>
+        </div>
       </nav>
 
-      <section className="hero" id="top" aria-labelledby="hero-title">
-        <div className="hero-copy">
-          <p className="eyebrow">Software engineer · Researcher · Problem solver</p>
-          <h1 id="hero-title">Hi, I&apos;m <span>Your Name.</span><br />I build useful things<br />for the web.</h1>
-          <p className="intro">
-            Add a short introduction here about what you care about, the kinds of
-            problems you enjoy, and the roles you&apos;re looking for. Two or three
-            sentences is perfect.
-          </p>
-          <div className="social-row" aria-label="Profile links">
-            <a href="#contact">GitHub <ArrowIcon /></a>
-            <a href="#contact">LinkedIn <ArrowIcon /></a>
-            <a href="#contact">Résumé <ArrowIcon /></a>
-            <a href="mailto:hello@example.com">Email <ArrowIcon /></a>
+      <div className="portfolio-shell">
+        <section className="profile-panel" id="contact" aria-labelledby="profile-title">
+          <div className="identity">
+            <div className="portrait" role="img" aria-label="Placeholder for your portrait">
+              <div className="portrait-person" />
+              <span>Add photo</span>
+            </div>
+            <div className="identity-copy">
+              <p className="label">Profile</p>
+              <h1 id="profile-title">Your Name</h1>
+              <p>Software engineer · Researcher</p>
+              <p>Your City · Your University</p>
+            </div>
           </div>
-        </div>
 
-        <div className="portrait-block">
-          <div className="portrait-frame" role="img" aria-label="Placeholder for your portrait">
-            <div className="portrait-shape" />
-            <span>Add your<br />photo here</span>
+          <div className="contact-stack" aria-label="Contact and profile links">
+            <p className="label">Contact</p>
+            <div className="profile-links">
+              {profiles.map((profile) => (
+                <a key={profile.label} href={profile.href} target="_blank" rel="noreferrer" aria-label={`Open ${profile.label}`}>
+                  <span aria-hidden="true">{profile.icon}</span>
+                  {profile.label}
+                  <Arrow />
+                </a>
+              ))}
+            </div>
+            <div className="direct-contact">
+              <a href="mailto:hello@example.com"><span>Email</span> hello@example.com</a>
+              <a href="tel:+10000000000"><span>Phone</span> +1 (000) 000-0000</a>
+            </div>
           </div>
-          <p><span>Currently</span> Based in Your City<br />Studying at Your University</p>
-        </div>
-      </section>
 
-      <section className="work" id="work" aria-labelledby="work-title">
-        <div className="section-heading">
-          <p className="eyebrow">A selection of things I&apos;ve made and studied</p>
-          <h2 id="work-title">Selected work<span>.</span></h2>
-        </div>
+          <div className="bio">
+            <p className="label">Bio</p>
+            <h2>I build reliable, thoughtful products and enjoy turning difficult problems into clear experiences.</h2>
+            <p>
+              Replace this with two short sentences about your focus, strongest skills,
+              and the software engineering roles you are pursuing.
+            </p>
+            <details>
+              <summary>More about me <span aria-hidden="true">＋</span></summary>
+              <p>
+                Add a little more context here: what first drew you to engineering,
+                how your research connects to your projects, or what you hope to work on next.
+              </p>
+            </details>
+          </div>
+        </section>
 
         <div className="work-grid">
-          <section className="work-column" aria-labelledby="publications-title">
-            <div className="column-heading">
-              <h2 id="publications-title">Publications</h2>
-              <span>02</span>
+          <section className="work-section" id="publications" aria-labelledby="publications-title">
+            <header>
+              <div>
+                <p className="label">01 / Research</p>
+                <h2 id="publications-title">Publications</h2>
+              </div>
+              <span>02 items</span>
+            </header>
+            <div className="card-list">
+              {publications.map((item) => <WorkCard key={item.number} item={item} />)}
             </div>
-            {publications.map((item) => <WorkCard key={item.number} item={item} />)}
           </section>
 
-          <section className="work-column" aria-labelledby="projects-title">
-            <div className="column-heading">
-              <h2 id="projects-title">Projects</h2>
-              <span>02</span>
+          <section className="work-section" id="projects" aria-labelledby="projects-title">
+            <header>
+              <div>
+                <p className="label">02 / Building</p>
+                <h2 id="projects-title">Projects</h2>
+              </div>
+              <span>02 items</span>
+            </header>
+            <div className="card-list">
+              {projects.map((item) => <WorkCard key={item.number} item={item} />)}
             </div>
-            {projects.map((item) => <WorkCard key={item.number} item={item} />)}
           </section>
         </div>
-      </section>
-
-      <footer id="contact">
-        <p className="eyebrow">Have an interesting problem?</p>
-        <a className="footer-cta" href="mailto:hello@example.com">Let&apos;s talk <ArrowIcon /></a>
-        <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Your Name</span>
-          <a href="#top">Back to top ↑</a>
-        </div>
-      </footer>
+      </div>
     </main>
   );
 }
