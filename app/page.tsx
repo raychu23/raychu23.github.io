@@ -132,20 +132,21 @@ export default function Home() {
 
           <div className="bio">
             <p className="label">Bio</p>
-            <h2>I build AI systems that have to work outside of a clean benchmark.</h2>
+            <h2>My work spans LLMs, transformer architectures, computer vision, and the systems around them.</h2>
             <p>
-              I am most interested in the point where model architecture, data, and
-              production constraints meet. My work has ranged from controlled transformer
-              experiments to traffic-safety systems running across more than 200 cameras.
+              I am comfortable with LLM APIs, transformer architectures, embeddings,
+              retrieval-augmented generation, vector search, vision-language models,
+              and computer vision.
             </p>
             <details>
               <summary>More about me <span aria-hidden="true">＋</span></summary>
               <p>
-                I tend to think in systems: what information comes in, how it is organized,
-                and what a person needs to do with it next. That has shaped the way I build,
-                from documentation tools that connect code to past bugs to computer-vision
-                pipelines that help traffic operators focus on credible emergencies. I like
-                work that improves what people already depend on without making it harder to use.
+                Across these projects, I have worked on data preparation, model evaluation,
+                inference efficiency, safety guardrails, and integrating AI into user-facing
+                software. I am naturally very particular, which has made me systems-oriented,
+                especially in how I manage information. I tend to think of much of what I do
+                as an input-output funnel: I capture ideas and notes, connect them to the right
+                context, and use them to move toward a project or decision.
               </p>
             </details>
           </div>
