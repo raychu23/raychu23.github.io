@@ -72,38 +72,43 @@ a { color: inherit; text-decoration: none; }
 
 .profile-panel {
   display: grid;
-  grid-template-columns: minmax(300px, 0.95fr) minmax(220px, 0.72fr) minmax(360px, 1.55fr);
+  grid-template-columns: minmax(390px, 1.2fr) minmax(220px, 0.72fr) minmax(330px, 1.25fr);
 }
 
 .identity,
 .contact-stack,
-.bio { padding: clamp(18px, 2vw, 30px); }
+.bio { min-height: 0; padding: clamp(18px, 2vw, 30px); }
 
 .identity,
 .contact-stack { border-right: 1px solid var(--line); }
 
 .identity {
-  align-items: start;
+  align-items: stretch;
   display: grid;
-  gap: clamp(18px, 2vw, 30px);
-  grid-template-columns: minmax(105px, 32%) 1fr;
-  padding-top: clamp(47px, 3.6vw, 54px);
+  gap: 0;
+  grid-template-columns: minmax(140px, 40%) 1fr;
+  padding: 0;
   position: relative;
 }
 
 .identity > .label {
+  background: rgba(244, 240, 232, 0.9);
   left: clamp(18px, 2vw, 30px);
+  padding: 5px 7px;
   position: absolute;
   top: clamp(18px, 2vw, 30px);
+  z-index: 1;
 }
 
 .portrait {
   align-items: flex-end;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: auto;
   background: var(--ink);
   display: flex;
   justify-content: center;
-  max-height: 245px;
+  height: auto;
+  max-height: none;
+  min-height: 0;
   overflow: hidden;
   position: relative;
 }
@@ -111,9 +116,16 @@ a { color: inherit; text-decoration: none; }
 .portrait-image {
   display: block;
   height: 100%;
+  inset: 0;
   object-fit: cover;
   object-position: center 38%;
+  position: absolute;
   width: 100%;
+}
+
+.identity-copy {
+  align-self: start;
+  padding: clamp(47px, 3.6vw, 54px) clamp(18px, 2vw, 30px) clamp(18px, 2vw, 30px);
 }
 
 .identity-copy h1 {
@@ -424,9 +436,9 @@ a { color: inherit; text-decoration: none; }
 @media (max-height: 760px) and (min-width: 901px) {
   .portfolio-shell { grid-template-rows: minmax(205px, 0.82fr) minmax(350px, 1.4fr); }
   .identity, .contact-stack, .bio { padding: 16px; }
-  .identity { grid-template-columns: minmax(96px, 31%) 1fr; padding-top: 42px; }
+  .identity { grid-template-columns: minmax(125px, 38%) 1fr; padding: 0; }
   .identity > .label { left: 16px; top: 16px; }
-  .portrait { max-height: 190px; }
+  .identity-copy { padding: 42px 16px 16px; }
   .profile-links { margin: 10px 0; }
   .profile-links a { min-height: 58px; }
   .bio h2 { font-size: 1.35rem; margin: 10px 0 8px; }
@@ -457,7 +469,7 @@ a { color: inherit; text-decoration: none; }
   .profile-panel { grid-template-columns: 1fr; }
   .identity, .contact-stack { border-bottom: 1px solid var(--line); border-right: 0; }
   .bio { grid-column: auto; }
-  .portrait { max-height: 190px; }
+  .identity { grid-template-columns: 42% 1fr; min-height: 220px; }
   .work-card > a { grid-template-columns: 1fr 95px; }
 }
 
