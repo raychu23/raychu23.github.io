@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element -- direct static assets avoid unsupported image optimization in this deployment */
 
 const publications = [
   {
@@ -82,7 +82,7 @@ function WorkCard({ item }: { item: WorkItem }) {
           </ul>
         </div>
         <div className={`card-thumbnail ${item.visual} ${preview ? "has-preview" : ""}`} aria-hidden="true">
-          {preview && <Image className={`card-preview ${previewClass}`} src={preview} alt="" fill sizes="155px" unoptimized />}
+          {preview && <img className={`card-preview ${previewClass}`} src={preview} alt="" loading="lazy" />}
           <span>{item.number}</span>
           <i />
           <b><Arrow /></b>
@@ -109,14 +109,11 @@ export default function Home() {
           <div className="identity">
             <p className="label">Profile</p>
             <div className="portrait">
-              <Image
+              <img
                 className="portrait-image"
                 src="/raymond-chu-photo.jpg"
                 alt="Raymond Chu in Central Park"
-                fill
-                priority
-                sizes="215px"
-                unoptimized
+                loading="eager"
               />
             </div>
             <div className="identity-copy">
