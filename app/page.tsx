@@ -16,7 +16,7 @@ const publications = [
     type: "Research paper",
     title: "Architectural Trade-offs in Semantic Segmentation",
     description: "Fine-tuned and compared high-accuracy and lightweight road-segmentation models, then benchmarked ONNX inference to study robustness and accuracy-latency tradeoffs for embedded automotive vision.",
-    tags: ["Fine-tuning", "Model benchmarking", "ONNX inference"],
+    tags: ["PyTorch", "Fine-Tuning", "ONNX Inference"],
     visual: "blue",
     preview: "/semantic-segmentation-cover.webp",
     previewClass: "paper",
@@ -38,9 +38,9 @@ const projects = [
     type: "Featured project",
     title: "Multiple Graph Representations Generator",
     description: "Developed a Streamlit tool that converts graphs among edge descriptions, formal titles, and images using modular computer-vision and graph-analysis components.",
-    tags: ["Python", "OpenCV", "NetworkX"],
+    tags: ["Python", "OpenCV", "NetworkX", "Graph Theory"],
     visual: "sand",
-    preview: "/graph-representations-preview.webp",
+    preview: "/graph-representations-cover.png",
     href: "https://softarchitech.cs.grinnell.edu/multiple-graph-representations-generator/",
   },
 ];
@@ -82,7 +82,7 @@ function WorkCard({ item }: { item: WorkItem }) {
           </ul>
         </div>
         <div className={`card-thumbnail ${item.visual} ${preview ? "has-preview" : ""}`} aria-hidden="true">
-          {preview && <Image className={`card-preview ${previewClass}`} src={preview} alt="" fill sizes="155px" />}
+          {preview && <Image className={`card-preview ${previewClass}`} src={preview} alt="" fill sizes="155px" unoptimized />}
           <span>{item.number}</span>
           <i />
           <b><Arrow /></b>
@@ -111,11 +111,12 @@ export default function Home() {
             <div className="portrait">
               <Image
                 className="portrait-image"
-                src="/raymond-chu-photo.webp"
+                src="/raymond-chu-photo.jpg"
                 alt="Raymond Chu in Central Park"
                 fill
                 priority
                 sizes="215px"
+                unoptimized
               />
             </div>
             <div className="identity-copy">

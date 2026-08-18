@@ -31,9 +31,14 @@ test("server-renders the portfolio", async () => {
   assert.match(html, /Student · Software engineer · AI\/ML researcher/);
   assert.match(html, /Grinnell College \(Iowa\)/);
   assert.match(html, /Architectural Trade-offs in Semantic Segmentation/);
-  assert.match(html, /Fine-tuning/);
-  assert.match(html, /Model benchmarking/);
+  assert.match(html, /PyTorch/);
+  assert.match(html, /Fine-Tuning/);
+  assert.match(html, /ONNX Inference/);
   assert.match(html, /Multiple Graph Representations Generator/);
+  assert.match(html, /Graph Theory/);
+  assert.match(html, /raymond-chu-photo\.jpg/);
+  assert.match(html, /graph-representations-cover\.png/);
+  assert.doesNotMatch(html, /\/_next\/image\?/);
   assert.match(html, /softarchitech\.cs\.grinnell\.edu\/multiple-graph-representations-generator/);
   assert.ok((html.match(/Featured project/g) ?? []).length >= 2);
   assert.doesNotMatch(html, /Selected project/);
