@@ -28,9 +28,16 @@ test("server-renders the portfolio", async () => {
   assert.match(html, /systems-oriented/);
   assert.doesNotMatch(html, /I build AI systems/i);
   assert.match(html, /churaymo@grinnell\.edu/);
+  assert.match(html, /Student · Software engineer · AI\/ML researcher/);
+  assert.match(html, /Grinnell College \(Iowa\)/);
   assert.match(html, /Architectural Trade-offs in Semantic Segmentation/);
+  assert.match(html, /Fine-tuning/);
+  assert.match(html, /Model benchmarking/);
   assert.match(html, /Multiple Graph Representations Generator/);
-  assert.match(html, /raychu23\/Multiple-Graph-Representations-Generator/);
+  assert.match(html, /softarchitech\.cs\.grinnell\.edu\/multiple-graph-representations-generator/);
+  assert.ok((html.match(/Featured project/g) ?? []).length >= 2);
+  assert.doesNotMatch(html, /Selected project/);
+  assert.doesNotMatch(html, />2025</);
   assert.doesNotMatch(html, /Résumé|resume\.txt/i);
   assert.doesNotMatch(html, /Available for opportunities/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);

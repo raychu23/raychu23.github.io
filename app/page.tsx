@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const publications = [
   {
     number: "01",
@@ -13,9 +15,11 @@ const publications = [
     year: "2026",
     type: "Research paper",
     title: "Architectural Trade-offs in Semantic Segmentation",
-    description: "Compared three road-segmentation architectures across accuracy, latency, and adverse driving conditions to study practical model selection under embedded constraints.",
-    tags: ["Computer vision", "PyTorch", "BDD100K"],
+    description: "Fine-tuned and compared high-accuracy and lightweight road-segmentation models, then benchmarked ONNX inference to study robustness and accuracy-latency tradeoffs for embedded automotive vision.",
+    tags: ["Fine-tuning", "Model benchmarking", "ONNX inference"],
     visual: "blue",
+    preview: "/semantic-segmentation-cover.webp",
+    previewClass: "paper",
     href: "/publications/architectural-tradeoffs-semantic-segmentation.pdf",
   },
 ];
@@ -23,7 +27,6 @@ const publications = [
 const projects = [
   {
     number: "01",
-    year: "2026",
     type: "Featured project",
     title: "Project name goes here",
     description: "The problem you solved, what you built, and one measurable outcome.",
@@ -32,13 +35,13 @@ const projects = [
   },
   {
     number: "02",
-    year: "2025",
-    type: "Selected project",
+    type: "Featured project",
     title: "Multiple Graph Representations Generator",
-    description: "Built a tool that converts graphs between titles, edge-list descriptions, images, and camera input, with structural analysis and isomorphism checking.",
+    description: "Developed a Streamlit tool that converts graphs among edge descriptions, formal titles, and images using modular computer-vision and graph-analysis components.",
     tags: ["Python", "OpenCV", "NetworkX"],
     visual: "sand",
-    href: "https://github.com/raychu23/Multiple-Graph-Representations-Generator",
+    preview: "/graph-representations-preview.webp",
+    href: "https://softarchitech.cs.grinnell.edu/multiple-graph-representations-generator/",
   },
 ];
 
@@ -56,6 +59,8 @@ function Arrow() {
 function WorkCard({ item }: { item: WorkItem }) {
   const href = "href" in item ? item.href : "#contact";
   const opensNewTab = href.startsWith("http") || href.endsWith(".pdf");
+  const preview = "preview" in item ? item.preview : null;
+  const previewClass = "previewClass" in item ? item.previewClass : "";
 
   return (
     <article className="work-card">
@@ -68,7 +73,7 @@ function WorkCard({ item }: { item: WorkItem }) {
         <div className="card-copy">
           <div className="card-kicker">
             <span>{item.number} / {item.type}</span>
-            <span>{item.year}</span>
+            {"year" in item && <span>{item.year}</span>}
           </div>
           <h3>{item.title}</h3>
           <p>{item.description}</p>
@@ -76,7 +81,8 @@ function WorkCard({ item }: { item: WorkItem }) {
             {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
           </ul>
         </div>
-        <div className={`card-thumbnail ${item.visual}`} aria-hidden="true">
+        <div className={`card-thumbnail ${item.visual} ${preview ? "has-preview" : ""}`} aria-hidden="true">
+          {preview && <Image className={`card-preview ${previewClass}`} src={preview} alt="" fill sizes="155px" />}
           <span>{item.number}</span>
           <i />
           <b><Arrow /></b>
@@ -101,15 +107,21 @@ export default function Home() {
       <div className="portfolio-shell">
         <section className="profile-panel" id="contact" aria-labelledby="profile-title">
           <div className="identity">
-            <div className="portrait" role="img" aria-label="Abstract portrait placeholder for Raymond Chu">
-              <div className="portrait-person" />
-              <span>Add photo</span>
+            <p className="label">Profile</p>
+            <div className="portrait">
+              <Image
+                className="portrait-image"
+                src="/raymond-chu-photo.webp"
+                alt="Raymond Chu in Central Park"
+                fill
+                priority
+                sizes="215px"
+              />
             </div>
             <div className="identity-copy">
-              <p className="label">Profile</p>
               <h1 id="profile-title">Raymond Chu</h1>
-              <p>Software engineer · AI/ML researcher</p>
-              <p>San Jose, CA · Grinnell College</p>
+              <p>Student · Software engineer · AI/ML researcher</p>
+              <p>San Jose, CA · Grinnell College (Iowa)</p>
             </div>
           </div>
 

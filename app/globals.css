@@ -87,6 +87,14 @@ a { color: inherit; text-decoration: none; }
   display: grid;
   gap: clamp(18px, 2vw, 30px);
   grid-template-columns: minmax(110px, 38%) 1fr;
+  padding-top: clamp(44px, 4vw, 60px);
+  position: relative;
+}
+
+.identity > .label {
+  left: clamp(18px, 2vw, 30px);
+  position: absolute;
+  top: clamp(18px, 2vw, 30px);
 }
 
 .portrait {
@@ -100,49 +108,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
 }
 
-.portrait::before {
-  background: var(--acid);
-  border-radius: 50%;
-  content: "";
-  height: 72%;
-  position: absolute;
-  right: -25%;
-  top: -14%;
-  width: 90%;
-}
-
-.portrait-person {
-  background: #d5ccbc;
-  border-radius: 48% 48% 10% 10%;
-  bottom: -12%;
-  height: 73%;
-  position: absolute;
-  width: 56%;
-}
-
-.portrait-person::before {
-  background: #eee6d7;
-  border-radius: 50%;
-  content: "";
-  height: 35%;
-  left: 23%;
-  position: absolute;
-  top: -18%;
-  width: 56%;
-}
-
-.portrait > span {
-  background: var(--accent);
-  bottom: 0;
-  color: #fff;
-  font-size: 0.55rem;
-  font-weight: 800;
-  left: 0;
-  letter-spacing: 0.1em;
-  padding: 7px 9px;
-  position: absolute;
-  text-transform: uppercase;
-}
+.portrait-image { object-fit: cover; object-position: center 38%; }
 
 .identity-copy h1 {
   font-size: clamp(1.8rem, 3vw, 3.2rem);
@@ -397,6 +363,22 @@ a { color: inherit; text-decoration: none; }
   top: -3px;
 }
 
+.card-preview { object-fit: cover; }
+.card-preview.paper { object-position: center top; }
+
+.card-thumbnail.has-preview > span {
+  background: rgba(244, 240, 232, 0.9);
+  font-size: 0.68rem;
+  left: 9px;
+  letter-spacing: 0;
+  line-height: 1;
+  padding: 5px 7px;
+  top: 9px;
+  z-index: 1;
+}
+
+.card-thumbnail.has-preview i { display: none; }
+
 .card-thumbnail i {
   border: 2px solid var(--ink);
   border-radius: 50%;
@@ -424,11 +406,14 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   right: 10px;
   width: 25px;
+  z-index: 1;
 }
 
 @media (max-height: 760px) and (min-width: 901px) {
   .portfolio-shell { grid-template-rows: minmax(205px, 0.82fr) minmax(350px, 1.4fr); }
   .identity, .contact-stack, .bio { padding: 16px; }
+  .identity { padding-top: 42px; }
+  .identity > .label { left: 16px; top: 16px; }
   .portrait { max-height: 175px; }
   .profile-links { margin: 10px 0; }
   .profile-links a { min-height: 58px; }
