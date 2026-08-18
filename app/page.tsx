@@ -10,12 +10,13 @@ const publications = [
   },
   {
     number: "02",
-    year: "2025",
-    type: "Conference paper",
-    title: "Your second publication",
-    description: "Add the venue, central finding, and a concise description of your role.",
-    tags: ["Data systems", "Collaboration"],
+    year: "2026",
+    type: "Research paper",
+    title: "Architectural Trade-offs in Semantic Segmentation",
+    description: "Compared three road-segmentation architectures across accuracy, latency, and adverse driving conditions to study practical model selection under embedded constraints.",
+    tags: ["Computer vision", "PyTorch", "BDD100K"],
     visual: "blue",
+    href: "/publications/architectural-tradeoffs-semantic-segmentation.pdf",
   },
 ];
 
@@ -33,17 +34,17 @@ const projects = [
     number: "02",
     year: "2025",
     type: "Selected project",
-    title: "Another thing you built",
-    description: "A compact summary of the technical challenge and why the work matters.",
-    tags: ["Python", "Systems"],
+    title: "Multiple Graph Representations Generator",
+    description: "Built a tool that converts graphs between titles, edge-list descriptions, images, and camera input, with structural analysis and isomorphism checking.",
+    tags: ["Python", "OpenCV", "NetworkX"],
     visual: "sand",
+    href: "https://github.com/raychu23/Multiple-Graph-Representations-Generator",
   },
 ];
 
 const profiles = [
-  { label: "GitHub", icon: "GH", href: "https://github.com/" },
-  { label: "LinkedIn", icon: "in", href: "https://www.linkedin.com/" },
-  { label: "Résumé", icon: "CV", href: "/resume.txt" },
+  { label: "GitHub", icon: "GH", href: "https://github.com/raychu23" },
+  { label: "LinkedIn", icon: "in", href: "https://www.linkedin.com/in/raymondchu001/" },
 ];
 
 type WorkItem = (typeof publications)[number] | (typeof projects)[number];
@@ -53,9 +54,17 @@ function Arrow() {
 }
 
 function WorkCard({ item }: { item: WorkItem }) {
+  const href = "href" in item ? item.href : "#contact";
+  const opensNewTab = href.startsWith("http") || href.endsWith(".pdf");
+
   return (
     <article className="work-card">
-      <a href="#contact" aria-label={`Open ${item.title}`}>
+      <a
+        href={href}
+        aria-label={`Open ${item.title}`}
+        target={opensNewTab ? "_blank" : undefined}
+        rel={opensNewTab ? "noreferrer" : undefined}
+      >
         <div className="card-copy">
           <div className="card-kicker">
             <span>{item.number} / {item.type}</span>
@@ -81,7 +90,7 @@ export default function Home() {
   return (
     <main id="top">
       <nav className="topbar" aria-label="Portfolio sections">
-        <a className="wordmark" href="#top" aria-label="Your Name, home">YN<span>.</span></a>
+        <a className="wordmark" href="#top" aria-label="Raymond Chu, home">RC<span>.</span></a>
         <div className="nav-links">
           <a href="#contact">Contact / Bio</a>
           <a href="#publications">Publications</a>
@@ -92,15 +101,15 @@ export default function Home() {
       <div className="portfolio-shell">
         <section className="profile-panel" id="contact" aria-labelledby="profile-title">
           <div className="identity">
-            <div className="portrait" role="img" aria-label="Placeholder for your portrait">
+            <div className="portrait" role="img" aria-label="Abstract portrait placeholder for Raymond Chu">
               <div className="portrait-person" />
               <span>Add photo</span>
             </div>
             <div className="identity-copy">
               <p className="label">Profile</p>
-              <h1 id="profile-title">Your Name</h1>
-              <p>Software engineer · Researcher</p>
-              <p>Your City · Your University</p>
+              <h1 id="profile-title">Raymond Chu</h1>
+              <p>Software engineer · AI/ML researcher</p>
+              <p>San Jose, CA · Grinnell College</p>
             </div>
           </div>
 
@@ -116,23 +125,27 @@ export default function Home() {
               ))}
             </div>
             <div className="direct-contact">
-              <a href="mailto:hello@example.com"><span>Email</span> hello@example.com</a>
-              <a href="tel:+10000000000"><span>Phone</span> +1 (000) 000-0000</a>
+              <a href="mailto:churaymo@grinnell.edu"><span>Email</span> churaymo@grinnell.edu</a>
+              <a href="tel:+14088762186"><span>Phone</span> +1 (408) 876-2186</a>
             </div>
           </div>
 
           <div className="bio">
             <p className="label">Bio</p>
-            <h2>I build reliable, thoughtful products and enjoy turning difficult problems into clear experiences.</h2>
+            <h2>I build AI systems that have to work outside of a clean benchmark.</h2>
             <p>
-              Replace this with two short sentences about your focus, strongest skills,
-              and the software engineering roles you are pursuing.
+              I am most interested in the point where model architecture, data, and
+              production constraints meet. My work has ranged from controlled transformer
+              experiments to traffic-safety systems running across more than 200 cameras.
             </p>
             <details>
               <summary>More about me <span aria-hidden="true">＋</span></summary>
               <p>
-                Add a little more context here: what first drew you to engineering,
-                how your research connects to your projects, or what you hope to work on next.
+                I tend to think in systems: what information comes in, how it is organized,
+                and what a person needs to do with it next. That has shaped the way I build,
+                from documentation tools that connect code to past bugs to computer-vision
+                pipelines that help traffic operators focus on credible emergencies. I like
+                work that improves what people already depend on without making it harder to use.
               </p>
             </details>
           </div>

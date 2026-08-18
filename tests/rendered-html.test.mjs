@@ -19,12 +19,16 @@ test("server-renders the portfolio", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>Your Name - Software Engineer<\/title>/i);
+  assert.match(html, /<title>Raymond Chu - Software Engineer<\/title>/i);
   assert.match(html, /Publications/);
   assert.match(html, /Projects/);
   assert.match(html, /Contact \/ Bio/);
   assert.match(html, /More about me/);
-  assert.match(html, /hello@example\.com/);
+  assert.match(html, /churaymo@grinnell\.edu/);
+  assert.match(html, /Architectural Trade-offs in Semantic Segmentation/);
+  assert.match(html, /Multiple Graph Representations Generator/);
+  assert.match(html, /raychu23\/Multiple-Graph-Representations-Generator/);
+  assert.doesNotMatch(html, /Résumé|resume\.txt/i);
   assert.doesNotMatch(html, /Available for opportunities/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/i);
 });
