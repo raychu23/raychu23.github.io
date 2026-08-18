@@ -83,11 +83,11 @@ a { color: inherit; text-decoration: none; }
 .contact-stack { border-right: 1px solid var(--line); }
 
 .identity {
-  align-items: center;
+  align-items: start;
   display: grid;
   gap: clamp(18px, 2vw, 30px);
-  grid-template-columns: minmax(110px, 38%) 1fr;
-  padding-top: clamp(44px, 4vw, 60px);
+  grid-template-columns: minmax(105px, 32%) 1fr;
+  padding-top: clamp(47px, 3.6vw, 54px);
   position: relative;
 }
 
@@ -99,11 +99,11 @@ a { color: inherit; text-decoration: none; }
 
 .portrait {
   align-items: flex-end;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 2 / 3;
   background: var(--ink);
   display: flex;
   justify-content: center;
-  max-height: 215px;
+  max-height: 245px;
   overflow: hidden;
   position: relative;
 }
@@ -121,7 +121,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 540;
   letter-spacing: -0.065em;
   line-height: 0.95;
-  margin: 15px 0 18px;
+  margin: 0 0 18px;
 }
 
 .identity-copy > p:not(.label) {
@@ -424,9 +424,9 @@ a { color: inherit; text-decoration: none; }
 @media (max-height: 760px) and (min-width: 901px) {
   .portfolio-shell { grid-template-rows: minmax(205px, 0.82fr) minmax(350px, 1.4fr); }
   .identity, .contact-stack, .bio { padding: 16px; }
-  .identity { padding-top: 42px; }
+  .identity { grid-template-columns: minmax(96px, 31%) 1fr; padding-top: 42px; }
   .identity > .label { left: 16px; top: 16px; }
-  .portrait { max-height: 175px; }
+  .portrait { max-height: 190px; }
   .profile-links { margin: 10px 0; }
   .profile-links a { min-height: 58px; }
   .bio h2 { font-size: 1.35rem; margin: 10px 0 8px; }

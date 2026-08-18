@@ -31,6 +31,10 @@ test("server-renders the portfolio", async () => {
   assert.match(html, /Student · Software engineer · AI\/ML researcher/);
   assert.match(html, /Grinnell College \(Iowa\)/);
   assert.match(html, /Architectural Trade-offs in Semantic Segmentation/);
+  assert.match(html, /From Laboratory Model to Statewide Deployment/);
+  assert.match(html, /wrong-way-driving-cover\.png/);
+  assert.match(html, /wrong-way-driving-detection-system\.pdf/);
+  assert.match(html, /Traffic Safety/);
   assert.match(html, /PyTorch/);
   assert.match(html, /Fine-Tuning/);
   assert.match(html, /ONNX Inference/);
