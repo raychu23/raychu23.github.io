@@ -60,7 +60,7 @@ function Arrow() {
 }
 
 function WorkCard({ item }: { item: WorkItem }) {
-  const href = "href" in item ? item.href : "#contact";
+  const href = ("href" in item ? item.href : undefined) ?? "#contact";
   const opensNewTab = href.startsWith("http") || href.endsWith(".pdf");
   const preview = "preview" in item ? item.preview : null;
   const previewClass = "previewClass" in item ? item.previewClass : "";
