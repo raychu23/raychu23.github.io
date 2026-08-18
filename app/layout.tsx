@@ -4,22 +4,22 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://raychu23.github.io"),
   title: {
-    default: "Your Name - Software Engineer",
-    template: "%s - Your Name",
+    default: "Raymond Chu - Software Engineer",
+    template: "%s - Raymond Chu",
   },
   description:
-    "Software engineer building thoughtful, reliable products and exploring ideas through research.",
+    "Raymond Chu is a software engineer and AI/ML researcher at Grinnell College building practical systems across language models, computer vision, and data infrastructure.",
   openGraph: {
-    title: "Your Name - Software Engineer",
-    description: "Selected software engineering projects and research.",
-    images: [{ url: "/og.png", width: 1733, height: 909, alt: "Your Name - Software Engineer" }],
+    title: "Raymond Chu - Software Engineer",
+    description: "Selected software engineering projects and research by Raymond Chu.",
+    images: [{ url: "/og-raymond-chu.png", width: 1568, height: 1003, alt: "Raymond Chu - Software Engineer" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Name - Software Engineer",
-    description: "Selected software engineering projects and research.",
-    images: ["/og.png"],
+    title: "Raymond Chu - Software Engineer",
+    description: "Selected software engineering projects and research by Raymond Chu.",
+    images: ["/og-raymond-chu.png"],
   },
 };
 

@@ -1,28 +1,35 @@
+/* eslint-disable @next/next/no-img-element -- direct static assets avoid unsupported image optimization in this deployment */
+
 const publications = [
   {
     number: "01",
     year: "2026",
     type: "Research paper",
-    title: "Publication title goes here",
-    description: "One sentence on the research question, your contribution, and the result.",
-    tags: ["Machine learning", "Research"],
+    title: "From Laboratory Model to Statewide Deployment",
+    description: "Documents the continuous enhancement of a wrong-way-driving detection system from 10 to more than 200 existing Iowa DOT CCTV cameras, with an emphasis on reliable operations, operator workload, and deployment cost.",
+    tags: ["Computer Vision", "Traffic Safety", "Deployment"],
     visual: "lime",
+    preview: "/wrong-way-driving-cover.png",
+    previewClass: "paper",
+    href: "/publications/wrong-way-driving-detection-system.pdf",
   },
   {
     number: "02",
-    year: "2025",
-    type: "Conference paper",
-    title: "Your second publication",
-    description: "Add the venue, central finding, and a concise description of your role.",
-    tags: ["Data systems", "Collaboration"],
+    year: "2026",
+    type: "Research paper",
+    title: "Architectural Trade-offs in Semantic Segmentation",
+    description: "Fine-tuned and compared high-accuracy and lightweight road-segmentation models, then benchmarked ONNX inference to study robustness and accuracy-latency tradeoffs for embedded automotive vision.",
+    tags: ["PyTorch", "Fine-Tuning", "ONNX Inference"],
     visual: "blue",
+    preview: "/semantic-segmentation-cover.webp",
+    previewClass: "paper",
+    href: "/publications/architectural-tradeoffs-semantic-segmentation.pdf",
   },
 ];
 
 const projects = [
   {
     number: "01",
-    year: "2026",
     type: "Featured project",
     title: "Project name goes here",
     description: "The problem you solved, what you built, and one measurable outcome.",
@@ -31,19 +38,19 @@ const projects = [
   },
   {
     number: "02",
-    year: "2025",
-    type: "Selected project",
-    title: "Another thing you built",
-    description: "A compact summary of the technical challenge and why the work matters.",
-    tags: ["Python", "Systems"],
+    type: "Featured project",
+    title: "Multiple Graph Representations Generator",
+    description: "Developed a Streamlit tool that converts graphs among edge descriptions, formal titles, and images using modular computer-vision and graph-analysis components.",
+    tags: ["Python", "OpenCV", "NetworkX", "Graph Theory"],
     visual: "sand",
+    preview: "/graph-representations-cover.png",
+    href: "https://softarchitech.cs.grinnell.edu/multiple-graph-representations-generator/",
   },
 ];
 
 const profiles = [
-  { label: "GitHub", icon: "GH", href: "https://github.com/" },
-  { label: "LinkedIn", icon: "in", href: "https://www.linkedin.com/" },
-  { label: "Résumé", icon: "CV", href: "/resume.txt" },
+  { label: "GitHub", icon: "GH", href: "https://github.com/raychu23" },
+  { label: "LinkedIn", icon: "in", href: "https://www.linkedin.com/in/raymondchu001/" },
 ];
 
 type WorkItem = (typeof publications)[number] | (typeof projects)[number];
@@ -53,13 +60,23 @@ function Arrow() {
 }
 
 function WorkCard({ item }: { item: WorkItem }) {
+  const href = "href" in item ? item.href : "#contact";
+  const opensNewTab = href.startsWith("http") || href.endsWith(".pdf");
+  const preview = "preview" in item ? item.preview : null;
+  const previewClass = "previewClass" in item ? item.previewClass : "";
+
   return (
     <article className="work-card">
-      <a href="#contact" aria-label={`Open ${item.title}`}>
+      <a
+        href={href}
+        aria-label={`Open ${item.title}`}
+        target={opensNewTab ? "_blank" : undefined}
+        rel={opensNewTab ? "noreferrer" : undefined}
+      >
         <div className="card-copy">
           <div className="card-kicker">
             <span>{item.number} / {item.type}</span>
-            <span>{item.year}</span>
+            {"year" in item && <span>{item.year}</span>}
           </div>
           <h3>{item.title}</h3>
           <p>{item.description}</p>
@@ -67,7 +84,8 @@ function WorkCard({ item }: { item: WorkItem }) {
             {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
           </ul>
         </div>
-        <div className={`card-thumbnail ${item.visual}`} aria-hidden="true">
+        <div className={`card-thumbnail ${item.visual} ${preview ? "has-preview" : ""}`} aria-hidden="true">
+          {preview && <img className={`card-preview ${previewClass}`} src={preview} alt="" loading="lazy" />}
           <span>{item.number}</span>
           <i />
           <b><Arrow /></b>
@@ -81,7 +99,7 @@ export default function Home() {
   return (
     <main id="top">
       <nav className="topbar" aria-label="Portfolio sections">
-        <a className="wordmark" href="#top" aria-label="Your Name, home">YN<span>.</span></a>
+        <a className="wordmark" href="#top" aria-label="Raymond Chu, home">RC<span>.</span></a>
         <div className="nav-links">
           <a href="#contact">Contact / Bio</a>
           <a href="#publications">Publications</a>
@@ -92,15 +110,19 @@ export default function Home() {
       <div className="portfolio-shell">
         <section className="profile-panel" id="contact" aria-labelledby="profile-title">
           <div className="identity">
-            <div className="portrait" role="img" aria-label="Placeholder for your portrait">
-              <div className="portrait-person" />
-              <span>Add photo</span>
+            <p className="label">Profile</p>
+            <div className="portrait">
+              <img
+                className="portrait-image"
+                src="/raymond-chu-photo.jpg"
+                alt="Raymond Chu in Central Park"
+                loading="eager"
+              />
             </div>
             <div className="identity-copy">
-              <p className="label">Profile</p>
-              <h1 id="profile-title">Your Name</h1>
-              <p>Software engineer · Researcher</p>
-              <p>Your City · Your University</p>
+              <h1 id="profile-title">Raymond Chu</h1>
+              <p>Student · Software engineer · AI/ML researcher</p>
+              <p>San Jose, CA · Grinnell College (Iowa)</p>
             </div>
           </div>
 
@@ -116,23 +138,28 @@ export default function Home() {
               ))}
             </div>
             <div className="direct-contact">
-              <a href="mailto:hello@example.com"><span>Email</span> hello@example.com</a>
-              <a href="tel:+10000000000"><span>Phone</span> +1 (000) 000-0000</a>
+              <a href="mailto:churaymo@grinnell.edu"><span>Email</span> churaymo@grinnell.edu</a>
+              <a href="tel:+14088762186"><span>Phone</span> +1 (408) 876-2186</a>
             </div>
           </div>
 
           <div className="bio">
             <p className="label">Bio</p>
-            <h2>I build reliable, thoughtful products and enjoy turning difficult problems into clear experiences.</h2>
+            <h2>My work spans LLMs, transformer architectures, computer vision, and the systems around them.</h2>
             <p>
-              Replace this with two short sentences about your focus, strongest skills,
-              and the software engineering roles you are pursuing.
+              I am comfortable with LLM APIs, transformer architectures, embeddings,
+              retrieval-augmented generation, vector search, vision-language models,
+              and computer vision.
             </p>
             <details>
               <summary>More about me <span aria-hidden="true">＋</span></summary>
               <p>
-                Add a little more context here: what first drew you to engineering,
-                how your research connects to your projects, or what you hope to work on next.
+                Across these projects, I have worked on data preparation, model evaluation,
+                inference efficiency, safety guardrails, and integrating AI into user-facing
+                software. I am naturally very particular, which has made me systems-oriented,
+                especially in how I manage information. I tend to think of much of what I do
+                as an input-output funnel: I capture ideas and notes, connect them to the right
+                context, and use them to move toward a project or decision.
               </p>
             </details>
           </div>
