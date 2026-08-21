@@ -24,8 +24,13 @@ test("server-renders the portfolio", async () => {
   assert.match(html, /Projects/);
   assert.match(html, /Contact \/ Bio/);
   assert.match(html, /More about me/);
-  assert.match(html, /My work spans LLMs, transformer architectures, computer vision/);
+  assert.match(html, /surrounding system matters as much as the model/);
+  assert.match(html, /useful outside a demo/);
+  assert.match(html, /input-output funnel/);
+  assert.match(html, /indexing a changing codebase/);
   assert.match(html, /systems-oriented/);
+  assert.doesNotMatch(html, /My work spans LLMs/);
+  assert.doesNotMatch(html, /I am comfortable with LLM APIs/);
   assert.doesNotMatch(html, /I build AI systems/i);
   assert.match(html, /churaymo@grinnell\.edu/);
   assert.match(html, /Student · Software engineer · AI\/ML researcher/);
