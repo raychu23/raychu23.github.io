@@ -35,6 +35,8 @@ const projects = [
     description: "Developed a full-stack RAG system that ingests code repositories and technical documents, indexes embedded chunks in PostgreSQL, and returns grounded, traceable answers through semantic retrieval.",
     tags: ["RAG", "FastAPI", "PostgreSQL", "pgvector"],
     visual: "coral",
+    preview: "/documentation-insights-app.png",
+    previewClass: "app",
     href: "https://github.com/raychu23/Documentation-Insights-System",
   },
   {
