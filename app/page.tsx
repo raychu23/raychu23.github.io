@@ -148,23 +148,21 @@ export default function Home() {
 
           <div className="bio">
             <p className="label">Bio</p>
-            <h2>I am most interested in AI systems where the surrounding system matters as much as the model.</h2>
+            <h2>I am very particular about how information is organized, how the parts of a system connect, and whether something actually works the way it is supposed to.</h2>
             <p>
-              I have worked with language and vision models, but I am usually most
-              interested in what makes them useful outside a demo: how information is
-              prepared and retrieved, how a model is evaluated, and how the result fits
-              into software people already use.
+              That has made me systems-oriented and drawn me toward problems where the
+              model is only one part of the work.
             </p>
             <details>
               <summary>More about me <span aria-hidden="true">＋</span></summary>
               <p>
-                I am naturally very particular, which has made me systems-oriented. I tend
-                to think of much of what I do as an input-output funnel: I capture information,
-                connect it to the right context, and use it to move toward a project or decision.
-                That way of thinking also shows up in my work. Whether I am indexing a changing
-                codebase or improving a traffic-safety system, I like understanding how the pieces
-                connect and where a system becomes unreliable, expensive, or difficult for the
-                person using it.
+                My interests include LLMs, transformer architectures, retrieval systems,
+                vision-language models, computer vision, and the infrastructure around them.
+                My strengths are in understanding systems end to end, separating complicated
+                problems into testable parts, and tracing failures to their actual cause. I am
+                persistent when a problem does not have an obvious answer, and I like improving
+                systems in ways that are measurable without losing sight of reliability, cost,
+                or the people using them.
               </p>
             </details>
           </div>
