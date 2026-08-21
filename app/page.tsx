@@ -31,10 +31,11 @@ const projects = [
   {
     number: "01",
     type: "Featured project",
-    title: "Project name goes here",
-    description: "The problem you solved, what you built, and one measurable outcome.",
-    tags: ["TypeScript", "React", "APIs"],
+    title: "Documentation Insights System",
+    description: "Developed a full-stack RAG system that ingests code repositories and technical documents, indexes embedded chunks in PostgreSQL, and returns grounded, traceable answers through semantic retrieval.",
+    tags: ["RAG", "FastAPI", "PostgreSQL", "pgvector"],
     visual: "coral",
+    href: "https://github.com/raychu23/Documentation-Insights-System",
   },
   {
     number: "02",
