@@ -148,21 +148,23 @@ export default function Home() {
 
           <div className="bio">
             <p className="label">Bio</p>
-            <h2>My work spans LLMs, transformer architectures, computer vision, and the systems around them.</h2>
+            <h2>I am most interested in AI systems where the surrounding system matters as much as the model.</h2>
             <p>
-              I am comfortable with LLM APIs, transformer architectures, embeddings,
-              retrieval-augmented generation, vector search, vision-language models,
-              and computer vision.
+              I have worked with language and vision models, but I am usually most
+              interested in what makes them useful outside a demo: how information is
+              prepared and retrieved, how a model is evaluated, and how the result fits
+              into software people already use.
             </p>
             <details>
               <summary>More about me <span aria-hidden="true">＋</span></summary>
               <p>
-                Across these projects, I have worked on data preparation, model evaluation,
-                inference efficiency, safety guardrails, and integrating AI into user-facing
-                software. I am naturally very particular, which has made me systems-oriented,
-                especially in how I manage information. I tend to think of much of what I do
-                as an input-output funnel: I capture ideas and notes, connect them to the right
-                context, and use them to move toward a project or decision.
+                I am naturally very particular, which has made me systems-oriented. I tend
+                to think of much of what I do as an input-output funnel: I capture information,
+                connect it to the right context, and use it to move toward a project or decision.
+                That way of thinking also shows up in my work. Whether I am indexing a changing
+                codebase or improving a traffic-safety system, I like understanding how the pieces
+                connect and where a system becomes unreliable, expensive, or difficult for the
+                person using it.
               </p>
             </details>
           </div>
