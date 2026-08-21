@@ -24,12 +24,13 @@ test("server-renders the portfolio", async () => {
   assert.match(html, /Projects/);
   assert.match(html, /Contact \/ Bio/);
   assert.match(html, /More about me/);
-  assert.match(html, /very particular about how information is organized/);
-  assert.match(html, /model is only one part of the work/);
-  assert.match(html, /My interests include LLMs, transformer architectures, retrieval systems/);
+  assert.match(html, /As a developer and researcher/);
   assert.match(html, /separating complicated problems into testable parts/);
   assert.match(html, /without losing sight of reliability, cost/);
-  assert.match(html, /systems-oriented/);
+  assert.match(html, /This has drawn me toward LLMs, retrieval systems, transformer architectures/);
+  assert.match(html, /tracing failures to their actual cause instead of stopping at the first explanation/);
+  assert.match(html, /turning ambiguous questions into concrete experiments/);
+  assert.match(html, /learning unfamiliar tools and ideas/);
   assert.doesNotMatch(html, /My work spans LLMs/);
   assert.doesNotMatch(html, /I am comfortable with LLM APIs/);
   assert.doesNotMatch(html, /surrounding system matters as much as the model/);
