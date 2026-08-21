@@ -148,21 +148,20 @@ export default function Home() {
 
           <div className="bio">
             <p className="label">Bio</p>
-            <h2>I am very particular about how information is organized, how the parts of a system connect, and whether something actually works the way it is supposed to.</h2>
+            <h2>As a developer and researcher, I like understanding systems end to end, separating complicated problems into testable parts, and improving them in measurable ways without losing sight of reliability, cost, or the people using them.</h2>
             <p>
-              That has made me systems-oriented and drawn me toward problems where the
-              model is only one part of the work.
+              This has drawn me toward LLMs, retrieval systems, transformer architectures,
+              vision-language models, computer vision, and the infrastructure that supports them.
             </p>
             <details>
               <summary>More about me <span aria-hidden="true">＋</span></summary>
               <p>
-                My interests include LLMs, transformer architectures, retrieval systems,
-                vision-language models, computer vision, and the infrastructure around them.
-                My strengths are in understanding systems end to end, separating complicated
-                problems into testable parts, and tracing failures to their actual cause. I am
-                persistent when a problem does not have an obvious answer, and I like improving
-                systems in ways that are measurable without losing sight of reliability, cost,
-                or the people using them.
+                I am persistent when a problem does not have an obvious answer, and I prefer
+                tracing failures to their actual cause instead of stopping at the first explanation.
+                I like turning ambiguous questions into concrete experiments and carrying what I
+                learn back into the larger system. I am also motivated by learning unfamiliar tools
+                and ideas when a problem requires them, especially when they provide a better way
+                to test an assumption or build something useful.
               </p>
             </details>
           </div>
