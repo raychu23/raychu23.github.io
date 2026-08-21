@@ -389,6 +389,7 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
 }
 .card-preview.paper { object-position: center top; }
+.card-preview.app { object-position: 42% center; }
 
 .card-thumbnail.has-preview > span {
   background: rgba(244, 240, 232, 0.9);

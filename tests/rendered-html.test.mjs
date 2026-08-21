@@ -44,6 +44,7 @@ test("server-renders the portfolio", async () => {
   assert.match(html, /FastAPI/);
   assert.match(html, /pgvector/);
   assert.match(html, /github\.com\/raychu23\/Documentation-Insights-System/);
+  assert.match(html, /documentation-insights-app\.png/);
   assert.match(html, /Graph Theory/);
   assert.match(html, /raymond-chu-photo\.jpg/);
   assert.match(html, /graph-representations-cover\.png/);
