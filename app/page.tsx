@@ -189,7 +189,7 @@ export default function Home() {
               </div>
               <span>{String(projects.length).padStart(2, "0")} items</span>
             </header>
-            <div className="card-list project-card-list">
+            <div className="card-list project-card-list" tabIndex={0} aria-label="Project cards">
               {projects.map((item) => <WorkCard key={item.number} item={item} />)}
             </div>
           </section>
